@@ -1,0 +1,26 @@
+import turtle
+
+class Lego:
+    
+    zenon=turtle.Turtle()
+    
+    def idz(self,lenght):
+        self.zenon.fd(lenght)
+    
+    def obrot(self,angle):
+        self.zenon.rt(angle)
+        
+    def podnies(self):
+        self.zenon.up()
+        
+    def opusc(self):
+        self.zenon.down()
+        
+    def pozycja(self,x,y):
+        self.zenon.goto(x,y)
+
+kwadrat=Lego()
+for i in range(4):
+    kwadrat.idz(20)
+    kwadrat.obrot(90)
+     
