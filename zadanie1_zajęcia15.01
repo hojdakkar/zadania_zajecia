@@ -1,0 +1,73 @@
+#zadanie 1 podane na zajęciach
+
+class Pytanie:
+    tresc =''
+    pkt = ''
+    odp = ''
+    
+    def zadaj_pytanie(self):
+        print(self.tresc)
+        
+    def punktacja(self):
+        if(input('Odpowiedz (T/N): ') == self.odp):
+            self.pkt = 1
+        else:
+            self.pkt = 0
+    
+    def nowe_pytanie(self,tresc, odp):
+        self.tresc = tresc
+        self.odp = odp
+    
+    def wynik(self):
+        return self.pkt
+        
+class Quiz:
+    lista_pytan = []
+    
+    def dodaj_pytanie(self,Pytanie):
+        self.lista_pytan.append(Pytanie)
+    
+    def start_quiz(self):
+        for i in self.lista_pytan:
+            i.zadaj_pytanie()
+            i.punktacja()
+    
+    def punktacja(self):
+        suma = 0
+        for i in self.lista_pytan:
+            suma = suma + i.wynik()
+        return suma
+            
+    def koniec(self):
+        print("Gratulacje, udalo Ci sie zdobyc:",self.punktacja(),"punktow!")
+
+zestaw = []
+for i in range(5):
+    zestaw.append(Pytanie())
+zestaw[0].nowe_pytanie("Czy woda jest mokra?", "T")
+zestaw[1].nowe_pytanie("Czy Ziemia kręci się wokół Słońca?", "T")
+zestaw[2].nowe_pytanie("Czy lód jest ciepły?", "N")
+zestaw[3].nowe_pytanie("Czy Epstein popełnił samobójstwo?", "N")
+zestaw[4].nowe_pytanie("Czy Ziemia jest największą planetą w układzie słonecznym?", "N")
+    
+konkurs = Quiz()
+for i in zestaw:
+    konkurs.dodaj_pytanie(i)
+
+konkurs.start_quiz()
+konkurs.koniec()
+
+
+#Pyt = []
+#Pyt[0] = Pytanie
+#Pyt[0].nowe_pytanie("Czy woda jest mokra?","T")
+#Pyt.append(Pytanie())
+#Pyt[1].nowe_pytanie("Czy trawa jest zielona?","T")
+#
+#Pyt[0].zadaj_pytanie()
+#Pyt[0].punktacja()
+#Pyt[0].wynik()
+#
+#Pyt[1].zadaj_pytanie()
+#Pyt[1].punktacja()
+#Pyt[1].wynik()
